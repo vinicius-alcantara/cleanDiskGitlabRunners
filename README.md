@@ -11,6 +11,9 @@ Example:
 0 */1 * * * cd /home/agility/scripts && bash dockerPruneAll.sh 
 
 
+License
+-------
+
 BSD
 
 Author Information
