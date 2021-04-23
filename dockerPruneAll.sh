@@ -18,14 +18,12 @@ HOME_USER="$(cd ~ && pwd)";
 WORKDIR="$(echo "$HOME_USER"/cleandiskgitrunners)";
 SENDMAIL_SCRIPT="sendMailCurl.sh";
 PATH_SENDMAIL_SCRIPT="$(echo "$WORKDIR"/"$SENDMAIL_SCRIPT")";
-DISK_USAGE_THRESHOLD_ALERT=10;
+DISK_USAGE_THRESHOLD_ALERT=85;
 CONDITION_VALUE="$(echo "${#GITLAB_RUNNER[@]}"-1 | bc)";
 ##############
 
-#echo "$PATH_SENDMAIL_SCRIPT";
-
 #### IMPORTS | INCLUDES ####
-#source "$PATH_SENDMAIL_SCRIPT";
+source "$PATH_SENDMAIL_SCRIPT";
 ############################
 
 for ((i=0; i<=$CONDITION_VALUE; i++));
@@ -46,28 +44,27 @@ do
        	   ssh "$USER"@"${GITLAB_RUNNER[$i]}" sudo docker volume prune -f;
 	   if [ $? == 0 ];
 	   then
-	       #DISK_SIZE_AFTER=$(ssh "$USER"@"$WORKER_IP" df -h / --output=size | tail -n1);
-	       #DISK_USED_AFTER=$(ssh "$USER"@"$WORKER_IP" df -h / --output=used | tail -n1);
-               #DISK_AVAIL_AFTER=$(ssh "$USER"@"$WORKER_IP" df -h / --output=avail | tail -n1);
-               #DISK_PCENT_AFTER=$(ssh "$USER"@"$WORKER_IP" df -h / --output=pcent | tail -n1);
+	       DISK_SIZE_AFTER=$(ssh "$USER"@"${GITLAB_RUNNER[$i]}" df -h / --output=size | tail -n1);
+	       DISK_USED_AFTER=$(ssh "$USER"@"${GITLAB_RUNNER[$i]}" df -h / --output=used | tail -n1);
+               DISK_AVAIL_AFTER=$(ssh "$USER"@"${GITLAB_RUNNER[$i]}" df -h / --output=avail | tail -n1);
+               DISK_PCENT_AFTER=$(ssh "$USER"@"${GITLAB_RUNNER[$i]}" df -h / --output=pcent | tail -n1);
 	       
 	       function sendMailSuccess(){
-	           echo "Sucesso ao liberar espaço em disco no runner $HOSTNAME_RUNNER";
+	           create_body_mail_success;
+		   send_email_success;
 	       }
        		sendMailSuccess;
 	   else
 	       function sendMailFail2(){
-
-                   echo "Falha ao liberar espaço em disco - VOLUME";
-
+		   create_body_mail_failed_code_2;
+		   send_email_failed_code_2;
                }
                 sendMailFail2;
            fi
        else
 	   function sendMailFail1(){
-
-                   echo "Falha ao liberar espaço em disco - SYSTEM";    
-               
+	       create_body_mail_failed_code_2;
+               send_email_failed_code_2;
            }
             sendMailFail1;
        fi
