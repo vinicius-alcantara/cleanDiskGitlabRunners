@@ -58,10 +58,11 @@ Espa√ßo em disco liberado com sucesso no runner <GITLABRUNNER_NAME>. Segue Evid√
 
 Antes:
 Filesystem                       			Size Used Avail Use% Mounted
-/dev/mapper/ubuntu--vg-ubuntu--lv      <DISK_SIZE_BEFORE><DISK_USED_BEFORE><DISK_AVAIL_BEFORE> <DISK_PCENT_BEFORE>  	/
+/dev/mapper/ubuntu--vg-ubuntu--lv      <DISK_SIZE_BEFORE><DISK_USED_BEFORE><DISK_AVAIL_BEFORE> <DISK_PCENT_BEFORE>    /
+
 Depois:
 Filesystem                                              Size Used Avail Use% Mounted
-/dev/mapper/ubuntu--vg-ubuntu--lv      <DISK_SIZE_AFTER><DISK_USED_AFTER><DISK_AVAIL_AFTER> <DISK_PCENT_AFTER>          /
+/dev/mapper/ubuntu--vg-ubuntu--lv      <DISK_SIZE_AFTER><DISK_USED_AFTER><DISK_AVAIL_AFTER> <DISK_PCENT_AFTER>    /
 ";
 
 BODY_MAIL_FAILED="

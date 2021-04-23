@@ -18,7 +18,7 @@ HOME_USER="$(cd ~ && pwd)";
 WORKDIR="$(echo "$HOME_USER"/cleandiskgitrunners)";
 SENDMAIL_SCRIPT="sendMailCurl.sh";
 PATH_SENDMAIL_SCRIPT="$(echo "$WORKDIR"/"$SENDMAIL_SCRIPT")";
-DISK_USAGE_THRESHOLD_ALERT=85;
+DISK_USAGE_THRESHOLD_ALERT=10;
 CONDITION_VALUE="$(echo "${#GITLAB_RUNNER[@]}"-1 | bc)";
 ##############
 
