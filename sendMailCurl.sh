@@ -3,9 +3,9 @@
 #######################################
 SMTP_SRV="smtp.office365.com";
 SMTP_PORT="587";
-SMTP_USR="$(echo -ne "cnVuZGVjay5zcm1AYWdpbGl0eW5ldHdvcmtzLmNvbS5icg==" | base64 -d)";
-SMTP_PASS="$(echo -ne "NGcxbDF0eUBtcw==" | base64 -d)"
-MAIL_FROM="$(echo -ne "cnVuZGVjay5zcm1AYWdpbGl0eW5ldHdvcmtzLmNvbS5icg==" | base64 -d)";
+SMTP_USR="$(echo -ne "xxxxxxxxxxxxx==" | base64 -d)";
+SMTP_PASS="$(echo -ne "yyyyyyyyyyyyy==" | base64 -d)"
+MAIL_FROM="$(echo -ne "zzzzzzzzzzzzzzzz==" | base64 -d)";
 MAIL_TO_1="vinicius.redes2020@gmail.com";
 SUBJECT_SUCCESS="SUCCESS: SRM-SRV";
 SUBJECT_FAILED="FAILED: SRM-SRV";
